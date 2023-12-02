@@ -1,0 +1,21 @@
+{
+  "id": 0,
+  "configId": 0,
+  "jobName": "jobName_d0e315edfdfa",
+  "jobStatus": "00",
+  "monitorFile": "test.flag",
+  "loadFile": "test.file",
+  "allowIp": "10.12.1.1",
+  "startTime": "2023-12-01 15:28:44",
+  "endTime": "2023-12-01 15:28:44",
+  "totalCount": 0,
+  "successCount": 0,
+  "failCount": 0,
+  "doneCount": 0,
+  "exportCount": 0,
+  "exportFile": "exportFile_7e77900a7aeb",
+  "description": "description_2d90be6c4d32",
+  "createTime": "2023-12-01 15:28:44",
+  "modifyTime": "2023-12-01 15:28:44",
+  "finishTime": "2023-12-01 15:28:44"
+}

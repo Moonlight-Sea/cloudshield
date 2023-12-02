@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+logging:
+  level:
+    #    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'DEBUG'
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/Moonlight-Sea/cloud-shield-config.git
+          search-paths: config-repo/{profile}/{application}
+          default-label: master
+        native:
+          search-locations: file:./doc/config-repo/{application}/
+
+
+
+

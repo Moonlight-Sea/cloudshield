@@ -1,0 +1,34 @@
+server:
+  port: 8010
+  servlet:
+    context-path: /batch
+
+spring:
+  profiles:
+    active: local
+  # 应用名称
+  application:
+    name: shield-batch
+  config:
+    import: optional:configserver:http://localhost:8888
+  # @Async 注解的线程池配置
+  task:
+    execution:
+      threadNamePrefix: shield-batch-thread-
+      pool:
+        # 核心线程数
+        core-size: 3
+        # 最大线程数
+        max-size: 10
+        # 队列容量
+        queue-capacity: 1000
+        # 线程池维护线程所允许的空闲时间
+        # 单位为秒
+        keep-alive: 60s
+
+
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: pers.sea.shield.batch.pojo.entity
+

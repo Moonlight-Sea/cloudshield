@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service>
+    <SYS_HEAD>
+        <ServiceCode>100ES000001</ServiceCode>
+        <ServiceScene>01</ServiceScene>
+        <ConsumerSeqNo>G01692023101309000860c49e24476c</ConsumerSeqNo>
+        <OrgConsumerSeqNo>G01692023101309000860c49e24476c</OrgConsumerSeqNo>
+        <ChannelTyp>SE0000</ChannelTyp>
+        <OrgConsumerId>CS00</OrgConsumerId>
+    </SYS_HEAD>
+    <APP_HEAD/>
+    <BODY>
+        <AplyNo>SEQ00020231013274444</AplyNo>
+        <AplyTm>2023-10-13 09:00:03</AplyTm>
+        <ItemCd>C000</ItemCd>
+        <PrdctNo>B|F</PrdctNo>
+        <CstCnNm>张XX</CstCnNm>
+        <IdentTp>01</IdentTp>
+        <IdentNo>61052419970305XXX1</IdentNo>
+        <Gender>M</Gender>
+        <Age>29</Age>
+        <IDCardVldEndDt>2042-04-25</IDCardVldEndDt>
+        <MblNo>180XXX72561</MblNo>
+        <MartSt>2</MartSt>
+        <CrSngLoanBal>308000.00</CrSngLoanBal>
+        <CrLoanCrLmt>104888.00</CrLoanCrLmt>
+        <SngLoanBal>220000.00</SngLoanBal>
+        <LoanCrLmt>104888.00</LoanCrLmt>
+        <InstLmtAmt>5000000.00</InstLmtAmt>
+        <CnsmrSngLoanBal>0.00</CnsmrSngLoanBal>
+        <CnsmrLoanCrLmt>104888.00</CnsmrLoanCrLmt>
+        <LoanBal>0</LoanBal>
+        <IsFlg3>0</IsFlg3>
+        <RfsTms>2</RfsTms>
+        <AcctRelFLg>0</AcctRelFLg>
+        <PblcBrwFlg>0</PblcBrwFlg>
+        <MainBrwFlg>0</MainBrwFlg>
+        <IsFlg1>0</IsFlg1>
+        <IsFlg2>0</IsFlg2>
+        <LoanBalt>88000.00</LoanBalt>
+        <CstMgrInstNo>108400</CstMgrInstNo>
+        <UsedLmt>324888.00</UsedLmt>
+        <OwnBnkCnsLnSngBnlAmt>10000.00</OwnBnkCnsLnSngBnlAmt>
+        <CrUsedLmt>324888.00</CrUsedLmt>
+        <SubchMrtgLmt>324888.00</SubchMrtgLmt>
+        <ExtrAmt>94888.00</ExtrAmt>
+        <TaxPrsnNm>中国工商银行股份有限公司</TaxPrsnNm>
+        <BsnSeqNo>DB000000000000000000D1</BsnSeqNo>
+        <RsltnListAmt>10000.00</RsltnListAmt>
+        <RfsHisFlg>0</RfsHisFlg>
+    </BODY>
+</service>

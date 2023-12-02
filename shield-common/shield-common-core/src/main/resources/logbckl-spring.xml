@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true" scanPeriod="30 minutes">
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <include resource="logging/logging-layout.xml"/>
+    <include resource="logging/logging-append.xml"/>
+
+</configuration>

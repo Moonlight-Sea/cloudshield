@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<include>
+
+    <springProperty scope="context" name="app_name" source="spring.application.name"/>
+    <property name="LOG_DIR" value="/home/application/logs"/>
+    <property name="LOG_FILE" value="${app_name}.log"/>
+    <!--    use defaults.xml -->
+    <!--    <property name="CONSOLE_LOG_THRESHOLD" value="${CONSOLE_LOG_THRESHOLD:-INFO}" />-->
+    <property name="CONSOLE_LOG_PATTERN" value="%d{HH:mm:ss.SSS} %-5level %logger{36} -%msg%n"/>
+    <property name="FILE_LOG_THRESHOLD" value="INFO"/>
+    <property name="LOG_FILE_PATTERN" value="%-4relative [%thread] %-5level %logger{35} - %msg%n"/>
+
+</include>

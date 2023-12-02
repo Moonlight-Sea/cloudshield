@@ -1,0 +1,12 @@
+server:
+  port: 8010
+  servlet:
+    context-path: /dispatch
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: shield-dispatch
+  config:
+    import: optional:configserver:http://localhost:8888

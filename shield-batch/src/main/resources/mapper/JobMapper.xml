@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.sea.shield.batch.mapper.JobMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="pers.sea.shield.batch.pojo.entity.Job">
+        <id column="id" property="id"/>
+        <result column="config_id" property="configId"/>
+        <result column="job_name" property="jobName"/>
+        <result column="job_status" property="jobStatus"/>
+        <result column="monitor_file" property="monitorFile"/>
+        <result column="load_file" property="loadFile"/>
+        <result column="allow_ip" property="allowIp"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="total_count" property="totalCount"/>
+        <result column="success_count" property="successCount"/>
+        <result column="fail_count" property="failCount"/>
+        <result column="done_count" property="doneCount"/>
+        <result column="export_count" property="exportCount"/>
+        <result column="description" property="description"/>
+        <result column="create_time" property="createTime"/>
+        <result column="modify_time" property="modifyTime"/>
+        <result column="finish_time" property="finishTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        <if test="true">
+            id, job_id, job_name, job_status, monitor_file, load_file, allow_ip, start_time, end_time, total_count,
+            success_count, fail_count, done_count, export_count, description, create_time, modify_time, finish_time
+        </if>
+    </sql>
+
+    <select id="findWaitJob" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM shield_batch.batch_job
+        LEFT JOIN shield_batch.batch_job_config bjc on batch_job.config_id = bjc.id
+        WHERE job_status = '00'
+        and bjc.allow_time &lt; #{nowTime}
+        and find_in_set(#{allowIp}, bjc.allow_ip)
+    </select>
+
+</mapper>

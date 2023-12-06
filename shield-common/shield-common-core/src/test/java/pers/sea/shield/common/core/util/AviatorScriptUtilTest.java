@@ -34,7 +34,7 @@ class AviatorScriptUtilTest {
     @org.junit.jupiter.api.Test
     void simplePlus() {
         Object result = AviatorScriptUtil.executeWithCache("1+1", null);
-        assertEquals(2l, result);
+        assertEquals(2L, result);
     }
 
     @DisplayName("两个变量的加法计算")
@@ -42,7 +42,7 @@ class AviatorScriptUtilTest {
     void plusTwoArgs() {
         // a: 10; b: 12;
         Object result = AviatorScriptUtil.executeWithCache("#a+#b", args);
-        assertEquals(22l, result);
+        assertEquals(22L, result);
     }
 
     @DisplayName("简单的表达式赋值")

@@ -33,6 +33,10 @@ dependencyResolutionManagement {
             library("lombok", "org.projectlombok:lombok:1.18.30")
             library("commons-lang3", "org.apache.commons:commons-lang3:3.12.0")
             library("commons-collections4", "org.apache.commons:commons-collections4:4.4")
+            library("commons-httpclient5", "org.apache.httpcomponents.client5:httpclient5:5.2.3")
+            library("commons-httpclient5-fluent", "org.apache.httpcomponents.client5:httpclient5-fluent:5.2.3")
+
+
 
             library("hutool-all", "cn.hutool:hutool-all:5.8.23")
 
@@ -58,7 +62,7 @@ dependencyResolutionManagement {
         }
         create("testLibs") {
             val junit5 = version("junit5", "5.10.1")
-            val junitPlatform = version("junitPlatform", "1.10.1")
+            val junitPlatform = version("junitPlatform", "1.9.3")
 
             library("h2", "com.h2database:h2:2.2.224")
 
@@ -68,6 +72,8 @@ dependencyResolutionManagement {
 
             library("junit-platform-launcher", "org.junit.platform", "junit-platform-launcher").versionRef(junitPlatform)
             library("spring-boot-starter-test", "org.springframework.boot:spring-boot-starter-test:3.1.6")
+
+            bundle("junit5", listOf("junit-jupiter", "junit-api", "junit-engine", "junit-platform-launcher"))
         }
         // 仅用于开发环境
         create("devLibs") {

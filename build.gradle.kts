@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("java")
     // 管理依赖版本
@@ -12,6 +14,33 @@ group = "pre.sea.cloud.cloud-shield"
 version = "1.0.0"
 description = "cloud-shield 聚合父工程"
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(19))
+    }
+}
+
+dependencies {
+    testImplementation(platform("org.junit:junit-bom:5.10.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release.set(8)
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+
 allprojects {
 
     repositories {
@@ -21,15 +50,7 @@ allprojects {
         maven { setUrl("https://maven.aliyun.com/repository/gradle-plugin") }
         mavenCentral()
     }
-
 }
-
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(19))
-    }
-}
-
 
 subprojects {
 

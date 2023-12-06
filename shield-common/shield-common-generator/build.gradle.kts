@@ -7,6 +7,5 @@ dependencies {
     implementation(libs.freemarker)
     // end
 
-    testImplementation(testLibs.junit.jupiter)
-    testImplementation(testLibs.junit.platform.launcher)
+    testImplementation(testLibs.junit.engine)
 }

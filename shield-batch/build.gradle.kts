@@ -15,6 +15,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 
     implementation("org.springframework.cloud:spring-cloud-starter-config")
+    // https://mvnrepository.com/artifact/com.hierynomus/sshj
+    implementation("com.hierynomus:sshj:0.37.0")
+
+
 
     // api
     implementation(libs.commons.lang3)

@@ -15,14 +15,14 @@ public interface JobTaskExecutor {
      * @param job 任务
      * @return true:允许执行 false:不允许执行
      */
-    boolean isAllow(Job job);
+    boolean checkAllow(Job job);
 
     /**
      * 任务执行前: 如：记录任务开始时间
      *
      * @param job 任务
      */
-    void before(Job job);
+    void setUp(Job job);
 
     /**
      * 任务执行
@@ -36,6 +36,6 @@ public interface JobTaskExecutor {
      *
      * @param job 任务
      */
-    void after(Job job);
+    void after(Job job) throws IOException;
 
 }

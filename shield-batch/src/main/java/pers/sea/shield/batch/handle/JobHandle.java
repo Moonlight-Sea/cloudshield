@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import pers.sea.shield.batch.common.constant.BatchJobConstant;
 import pers.sea.shield.batch.common.util.IPUtils;
 import pers.sea.shield.batch.pojo.convert.JobConvert;
 import pers.sea.shield.batch.pojo.entity.Job;
@@ -66,19 +67,28 @@ public class JobHandle {
 
         // 2. 开始执行任务
         waitJob.forEach(job -> {
-            if (!simpleJobTask.isAllow(job)) {
+            // 2.0 任务是否允许执行
+            if (!simpleJobTask.checkAllow(job)) {
                 return;
             }
             // 2.1 开始执行前的准备工作
-            simpleJobTask.before(job);
+            simpleJobTask.setUp(job);
             // 2.2 执行任务
             try {
                 simpleJobTask.execute(job);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                log.error("执行任务失败", e);
+                job.setJobStatus(BatchJobConstant.JOB_STATUS_FAIL);
+                jobService.updateById(job);
             }
             // 2.3 结束执行后的工作
-            simpleJobTask.after(job);
+            try {
+                simpleJobTask.after(job);
+            } catch (IOException e) {
+                log.error("执行任务结束后工作失败", e);
+                job.setJobStatus(BatchJobConstant.JOB_STATUS_FAIL);
+                jobService.updateById(job);
+            }
         });
     }
 

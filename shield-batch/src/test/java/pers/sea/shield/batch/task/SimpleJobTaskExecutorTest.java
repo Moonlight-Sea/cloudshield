@@ -15,7 +15,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.context.TestPropertySource;
+import pers.sea.shield.batch.common.constant.BatchProperty;
 import pers.sea.shield.batch.pojo.entity.Job;
+import pers.sea.shield.batch.pojo.entity.JobConfig;
 import pers.sea.shield.batch.service.IJobConfigService;
 import pers.sea.shield.batch.service.IJobService;
 import pers.sea.shield.batch.service.impl.JobConfigServiceImpl;
@@ -48,18 +50,19 @@ class SimpleJobTaskExecutorTest {
 
     private ObjectMapper objectMapper;
     private Job job;
+    private JobConfig jobConfig;
 
     @BeforeEach
     public void setup() throws IOException {
         jobService = Mockito.mock(JobServiceImpl.class);
         jobConfigService = Mockito.mock(JobConfigServiceImpl.class);
 
+
         objectMapper = new ObjectMapper();
         // other serializer and deSerializer config ...
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         objectMapper.setDateFormat(dateFormat);
-        simpleJobTaskExecutor = new SimpleJobTaskExecutor(jobService, jobConfigService, objectMapper);
 
         JavaTimeModule javaTimeModule = new JavaTimeModule();
 
@@ -73,6 +76,15 @@ class SimpleJobTaskExecutorTest {
         javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern("HH:mm:ss")));
         objectMapper.registerModule(javaTimeModule);
 
+        BatchProperty.monitorDir = "D:/Users/moon/Data/";
+        BatchProperty.resultDir = "D:/Users/moon/Data/file/";
+        BatchProperty.fileFlagSuffix = ".flag";
+
+        jobConfig = objectMapper.readValue(FileUtil.file("./data/JobConfig.json"), JobConfig.class);
+        given(jobConfigService.getById(0)).willReturn(jobConfig);
+
+        simpleJobTaskExecutor = new SimpleJobTaskExecutor(jobService, jobConfigService, objectMapper);
+
         File file = FileUtil.file("./data/Job.json");
         job = objectMapper.readValue(file, Job.class);
 
@@ -83,6 +95,8 @@ class SimpleJobTaskExecutorTest {
         // given - precondition or setup
         given(jobService.findWaitJob(anyString(), anyString())).willReturn(null);
         given(jobService.updateById(job)).willReturn(true);
+
+        simpleJobTaskExecutor.setUp(job);
 
         simpleJobTaskExecutor.execute(job);
         // then - verify the results

@@ -21,4 +21,16 @@ public class BatchJobConstant {
     public static final String JOB_STATUS_PUSHING = "04";
     public static final String JOB_STATUS_PUSH_FAIL = "05";
     public static final String JOB_STATUS_CANCEL = "06";
+
+    // Format function 00-express;01-jar
+    // ------------------------------------------------------------------------------------------------------
+
+    public static final String FORMAT_FUNCTION_EXPRESS = "00";
+    public static final String FORMAT_FUNCTION_JAR = "01";
+
+    // Refresh cache limits for reading files
+    // ------------------------------------------------------------------------------------------------------
+
+    public static int REFRESH_CACHE_LIMIT = 10000;
+
 }

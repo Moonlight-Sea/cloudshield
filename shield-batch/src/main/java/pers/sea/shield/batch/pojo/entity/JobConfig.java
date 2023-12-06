@@ -158,7 +158,7 @@ public class JobConfig {
     private String exportServerPassword;
 
     /**
-     * 导出服务器路径: 导出文件时，需要指定导出服务器路径
+     * 导出服务器全路径: 导出文件时，需要指定导出服务器全路径
      */
     @TableField("export_server_path")
     private String exportServerPath;

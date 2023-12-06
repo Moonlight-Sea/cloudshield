@@ -21,6 +21,12 @@ public enum BatchErrorInfo implements ServiceErrorInfo {
     FILE_DOWNLOAD_FAILED("F004", "文件下载失败"),
     FILE_NOT_FOUND("F005", "文件不存在"),
 
+    // N - 网络通讯错误
+    // ------------------------------------------------------------------------------------------------------
+
+    POST_REQUEST_ERROR("N001", "POST请求错误")
+
+
     ;
 
     private final String code;

@@ -19,17 +19,15 @@ package pers.sea.shield.common.core.exception;
  * 001 - Dispatch 模块
  * 002 - User 模块
  * 003 - MobileCode 模块
- * <p>
- * 错误分类:
- * V-参数校验问题 validate
- * B-业务错误类问题 business
- * D-数据库错误
- * F-文件系统错误
- * N-网络通信类错误 network
- * P-权限类错误 permission
- * O-外部系统错误
- * S-系统类错误 system
- * <p>
+ * <p>错误分类:
+ * <p>V-参数校验问题 validate
+ * <p>B-业务错误类问题 business
+ * <p>D-数据库错误
+ * <p>F-文件系统错误
+ * <p>N-网络通信类错误 network
+ * <p>P-权限类错误 permission
+ * <p>O-外部系统错误
+ * <p>S-系统类错误 system
  * 错误码顺位号:
  * 各系统自增
  *

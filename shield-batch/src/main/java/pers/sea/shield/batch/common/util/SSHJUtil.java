@@ -1,4 +1,4 @@
-package pers.sea.shield.batch.task;
+package pers.sea.shield.batch.common.util;
 
 import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.transport.verification.PromiscuousVerifier;

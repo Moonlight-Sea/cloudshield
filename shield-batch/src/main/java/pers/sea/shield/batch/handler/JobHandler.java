@@ -1,4 +1,4 @@
-package pers.sea.shield.batch.handle;
+package pers.sea.shield.batch.handler;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
@@ -30,15 +30,15 @@ import static pers.sea.shield.batch.common.constant.BatchJobConstant.STATUS_ENAB
  */
 @Service
 @Slf4j
-public class JobHandle {
+public class JobHandler {
 
     private final IJobConfigService jobConfigService;
     private final IJobService jobService;
     private final SimpleJobTaskExecutor simpleJobTask;
 
-    public JobHandle(IJobConfigService jobConfigService,
-                     IJobService jobService,
-                     SimpleJobTaskExecutor simpleJobTask) {
+    public JobHandler(IJobConfigService jobConfigService,
+                      IJobService jobService,
+                      SimpleJobTaskExecutor simpleJobTask) {
         this.jobConfigService = jobConfigService;
         this.jobService = jobService;
         this.simpleJobTask = simpleJobTask;

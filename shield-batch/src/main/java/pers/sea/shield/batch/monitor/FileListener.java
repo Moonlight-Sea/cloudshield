@@ -3,7 +3,7 @@ package pers.sea.shield.batch.monitor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.monitor.FileAlterationListenerAdaptor;
 import org.springframework.stereotype.Service;
-import pers.sea.shield.batch.handle.JobHandle;
+import pers.sea.shield.batch.handler.JobHandler;
 
 import java.io.File;
 
@@ -16,10 +16,10 @@ import java.io.File;
 @Slf4j
 public class FileListener extends FileAlterationListenerAdaptor {
 
-    private final JobHandle jobHandle;
+    private final JobHandler jobHandle;
 
-    public FileListener(JobHandle jobHandle) {
-        this.jobHandle = jobHandle;
+    public FileListener(JobHandler jobHandler) {
+        this.jobHandle = jobHandler;
     }
 
     @Override

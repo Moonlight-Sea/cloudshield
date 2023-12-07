@@ -9,6 +9,9 @@ dependencies {
 //    api("ch.qos.logback:logback-core:1.4.11")
     api(libs.bundles.jackson)
 
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
+
     // https://mvnrepository.com/artifact/com.googlecode.aviator/aviator
     implementation("com.googlecode.aviator:aviator:5.4.1")
 

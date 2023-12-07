@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import pers.sea.shield.batch.common.constant.BatchJobConstant;
 import pers.sea.shield.batch.common.constant.BatchProperty;
 import pers.sea.shield.batch.common.enums.BatchErrorInfo;
+import pers.sea.shield.batch.common.util.SSHJUtil;
 import pers.sea.shield.batch.pojo.entity.Job;
 import pers.sea.shield.batch.pojo.entity.JobConfig;
 import pers.sea.shield.batch.service.IJobConfigService;

@@ -45,17 +45,17 @@ public class ExportAndImportServiceImpl implements IExportAndImportService {
         // 2. 生成服务器文件路径
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename(), BatchErrorInfo.FILE_NAME_INVALID.getMessage()));
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern(DateConstant.DATE_FORMAT_WITHOUT_TIME));
-        Path path = Paths.get(fileBasePath, date, fileName);
         try {
-            boolean flag = !Files.notExists(path) || Files.createDirectories(path).isAbsolute();
-            if (flag) {
-                // 3. 上传文件
-                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-                // generate flag file
-                String flagFileName = fileName.substring(0, fileName.lastIndexOf(DOT)) + BatchProperty.fileFlagSuffix;
-                Files.createFile(Paths.get(fileBasePath, date, flagFileName));
-                return CommonResult.ok();
+            Path dateDirPath = Paths.get(fileBasePath, date);
+            if (Files.notExists(dateDirPath)) {
+                log.info("dateDirPath mkdir [{}]", dateDirPath.toFile().mkdirs());
             }
+            // 3. 上传文件
+            Files.copy(file.getInputStream(), dateDirPath.resolve(fileName), StandardCopyOption.REPLACE_EXISTING);
+            // generate flag file
+            String flagFileName = fileName.substring(0, fileName.lastIndexOf(DOT)) + BatchProperty.fileFlagSuffix;
+            Files.createFile(Paths.get(fileBasePath, date, flagFileName));
+            return CommonResult.ok();
         } catch (Exception e) {
             log.error(BatchErrorInfo.FILE_UPLOAD_FAILED.getMessage(), e);
         }

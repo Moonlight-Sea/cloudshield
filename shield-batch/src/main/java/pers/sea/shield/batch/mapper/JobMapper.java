@@ -1,7 +1,6 @@
 package pers.sea.shield.batch.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import pers.sea.shield.batch.pojo.entity.Job;
 
@@ -15,7 +14,6 @@ import java.util.List;
  * @author moon
  * @since 2023-11-24
  */
-@Mapper
 public interface JobMapper extends BaseMapper<Job> {
 
     /**

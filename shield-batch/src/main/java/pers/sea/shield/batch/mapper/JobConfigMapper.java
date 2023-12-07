@@ -1,7 +1,6 @@
 package pers.sea.shield.batch.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
 import pers.sea.shield.batch.pojo.entity.JobConfig;
 
 /**
@@ -12,7 +11,6 @@ import pers.sea.shield.batch.pojo.entity.JobConfig;
  * @author moon
  * @since 2023-11-24
  */
-@Mapper
 public interface JobConfigMapper extends BaseMapper<JobConfig> {
 
 }

@@ -19,7 +19,6 @@ dependencies {
     implementation("com.hierynomus:sshj:0.37.0")
 
 
-
     // api
     implementation(libs.commons.lang3)
     implementation(libs.commons.io)
@@ -34,5 +33,7 @@ dependencies {
     testImplementation(testLibs.h2)
 
     // 仅限于开发环境使用的依赖
-    implementation(devLibs.p6spy)
+    // https://mvnrepository.com/artifact/com.github.gavlyukovskiy/p6spy-spring-boot-starter
+    implementation(devLibs.p6spy.spring.boot.starter)
+//    implementation(devLibs.p6spy)
 }

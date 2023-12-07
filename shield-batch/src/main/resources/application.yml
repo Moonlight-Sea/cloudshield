@@ -26,8 +26,6 @@ spring:
         # 单位为秒
         keep-alive: 60s
 
-
-
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: pers.sea.shield.batch.pojo.entity

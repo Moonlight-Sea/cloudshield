@@ -2,7 +2,7 @@ package pers.sea.shield.batch.schedule;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import pers.sea.shield.batch.handle.JobHandle;
+import pers.sea.shield.batch.handler.JobHandler;
 
 /**
  * 批量作业调度
@@ -12,10 +12,10 @@ import pers.sea.shield.batch.handle.JobHandle;
 @Component
 public class JobSchedule {
 
-    private final JobHandle jobHandle;
+    private final JobHandler jobHandler;
 
-    public JobSchedule(JobHandle jobHandle) {
-        this.jobHandle = jobHandle;
+    public JobSchedule(JobHandler jobHandler) {
+        this.jobHandler = jobHandler;
     }
 
     /**
@@ -24,6 +24,6 @@ public class JobSchedule {
     @Scheduled(cron = "0 0/5 8 * * ?")
     public void schedule() {
         // 定时任务
-        jobHandle.start();
+        jobHandler.start();
     }
 }

@@ -79,6 +79,8 @@ dependencyResolutionManagement {
         create("devLibs") {
 
             library("p6spy", "p6spy:p6spy:3.9.1")
+            library("p6spy-spring-boot-starter", "com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.1")
+
         }
     }
 }

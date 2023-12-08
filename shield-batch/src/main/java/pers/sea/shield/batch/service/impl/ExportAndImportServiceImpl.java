@@ -63,18 +63,18 @@ public class ExportAndImportServiceImpl implements IExportAndImportService {
     }
 
     @Override
-    public Resource downloadFile(String date, String fileName) {
+    public Resource downloadFile(String path) {
         // 1. 文件名非法校验
-        if (org.apache.commons.lang3.StringUtils.isBlank(fileName) || fileName.endsWith(DOT)) {
+        if (org.apache.commons.lang3.StringUtils.isBlank(path) || path.endsWith(DOT)) {
             throw new CloudShieldException(BatchErrorInfo.FILE_NAME_INVALID);
         }
         // 2. 拼接文件路径并校验文件是否存在
-        Path path = Paths.get(fileBasePath, date, fileName);
-        if (!Files.exists(path)) {
+        Path pathFile = Paths.get(path);
+        if (!Files.exists(pathFile)) {
             throw new CloudShieldException(BatchErrorInfo.FILE_IS_EMPTY);
         }
         try {
-            return new UrlResource(path.toUri());
+            return new UrlResource(pathFile.toUri());
         } catch (IOException e) {
             log.error(BatchErrorInfo.FILE_DOWNLOAD_FAILED.getMessage(), e);
             throw new CloudShieldException(BatchErrorInfo.FILE_DOWNLOAD_FAILED);

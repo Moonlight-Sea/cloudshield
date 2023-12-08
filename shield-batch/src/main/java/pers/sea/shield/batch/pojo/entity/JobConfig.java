@@ -4,10 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author moon
- * @since 2023-11-27
+ * @since 2023-12-08
  */
 @Getter
 @Setter
@@ -26,7 +25,7 @@ public class JobConfig {
     private Integer id;
 
     /**
-     * 名称
+     * 名称 
      */
     @TableField("name")
     private String name;
@@ -68,7 +67,7 @@ public class JobConfig {
     private String allowIp;
 
     /**
-     * 允许时间: 任务允许执行的时间段
+     * 允许最早执行时间: 格式: HH:mm:ss
      */
     @TableField("allow_time")
     private String allowTime;
@@ -134,34 +133,34 @@ public class JobConfig {
     private Integer status;
 
     /**
-     * 导出服务器ip: 导出文件时，需要指定导出服务器ip
+     * (optional)远程服务器ip
      */
-    @TableField("export_server_ip")
-    private String exportServerIp;
+    @TableField("remote_server_ip")
+    private String remoteServerIp;
 
     /**
-     * 导出服务器端口: 导出文件时，需要指定导出服务器端口
+     * (optional)远程服务器端口
      */
-    @TableField("export_server_port")
-    private Integer exportServerPort;
+    @TableField("remote_server_port")
+    private Integer remoteServerPort;
 
     /**
-     * 导出服务器用户名: 导出文件时，需要指定导出服务器用户名
+     * (optional)远程服务器用户名
      */
-    @TableField("export_server_user")
-    private String exportServerUser;
+    @TableField("remote_server_user")
+    private String remoteServerUser;
 
     /**
-     * 导出服务器密码: 导出文件时，需要指定导出服务器密码
+     * (optional)远程服务器密码
      */
-    @TableField("export_server_password")
-    private String exportServerPassword;
+    @TableField("remote_server_password")
+    private String remoteServerPassword;
 
     /**
-     * 导出服务器全路径: 导出文件时，需要指定导出服务器全路径
+     * (optional)远程服务器路径
      */
-    @TableField("export_server_path")
-    private String exportServerPath;
+    @TableField("remote_server_path")
+    private String remoteServerPath;
 
     /**
      * 创建用户

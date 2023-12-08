@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.baomidou.mybatisplus.generator.query.SQLQuery;
 
+import java.io.File;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class MyBatisPlusGenerator {
 
-    public static final String OUTPUT_DIR = "E://Users/moon/Data";
+    public static final String OUTPUT_DIR = "D://Users/moon/Data";
     public static final List<String> TABLE_PREFIX = List.of("batch_");
     public static final String URL = "jdbc:mysql://127.0.0.1:3306/shield_batch";
     public static final String USERNAME = "root";
@@ -25,7 +26,7 @@ public class MyBatisPlusGenerator {
     public static final String AUTHOR = "moon";
     public static final String PACKAGE_NAME = "pers.sea.shield";
     public static final String MODEL_NAME = "batch";
-    public static final String MAPPER_PACKAGE_PATH = OUTPUT_DIR + PACKAGE_NAME.replace(".", "/") + "/Mapper";
+    public static final String MAPPER_PACKAGE_PATH = OUTPUT_DIR + File.separator + PACKAGE_NAME.replace(".", "/") + "/Mapper";
 
 
     /**

@@ -22,9 +22,8 @@ public interface IExportAndImportService {
     /**
      * download file
      *
-     * @param date     file name
-     * @param fileName file name
+     * @param path absolute path
      * @return resource
      */
-    Resource downloadFile(String date, String fileName);
+    Resource downloadFile(String path);
 }

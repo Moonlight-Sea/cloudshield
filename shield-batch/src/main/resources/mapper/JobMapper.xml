@@ -17,7 +17,9 @@
         <result column="success_count" property="successCount"/>
         <result column="fail_count" property="failCount"/>
         <result column="done_count" property="doneCount"/>
-        <result column="export_count" property="exportCount"/>
+        <result column="result_count" property="resultCount"/>
+        <result column="result_file" property="resultFile"/>
+        <result column="result_flag_file" property="resultFlagFile"/>
         <result column="description" property="description"/>
         <result column="create_time" property="createTime"/>
         <result column="modify_time" property="modifyTime"/>
@@ -27,8 +29,9 @@
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         <if test="true">
-            id, job_id, job_name, job_status, monitor_file, load_file, allow_ip, start_time, end_time, total_count,
-            success_count, fail_count, done_count, export_count, description, create_time, modify_time, finish_time
+            id, config_id, job_name, job_status, monitor_file, load_file, allow_ip, start_time, end_time, total_count,
+            success_count, fail_count, done_count, result_count, result_file, result_flag_file, description,
+            create_time, modify_time, finish_time
         </if>
     </sql>
 

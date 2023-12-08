@@ -1,8 +1,6 @@
 package pers.sea.shield.batch.controller.external;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pers.sea.shield.batch.service.IMonitorService;
 import pers.sea.shield.common.core.pojo.CommonResult;
 
@@ -11,6 +9,8 @@ import pers.sea.shield.common.core.pojo.CommonResult;
  *
  * @author moon on 2023/11/28
  */
+@RestController
+@RequestMapping("/monitor")
 public class MonitorController {
 
     private final IMonitorService monitorService;
@@ -19,13 +19,13 @@ public class MonitorController {
         this.monitorService = monitorService;
     }
 
-    @PostMapping("/monitor/{path}")
+    @PostMapping("/{path}")
     public CommonResult<String> addMonitor(@PathVariable String path) {
         monitorService.addObserver(path);
         return CommonResult.ok();
     }
 
-    @DeleteMapping("/monitor/{path}")
+    @DeleteMapping("/{path}")
     public CommonResult<String> stopMonitor(@PathVariable String path) {
         monitorService.stopObserver(path);
         return CommonResult.ok();

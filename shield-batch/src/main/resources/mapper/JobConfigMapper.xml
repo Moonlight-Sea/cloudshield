@@ -23,11 +23,11 @@
         <result column="result_file" property="resultFile"/>
         <result column="result_flag" property="resultFlag"/>
         <result column="status" property="status"/>
-        <result column="export_server_ip" property="exportServerIp"/>
-        <result column="export_server_port" property="exportServerPort"/>
-        <result column="export_server_user" property="exportServerUser"/>
-        <result column="export_server_password" property="exportServerPassword"/>
-        <result column="export_server_path" property="exportServerPath"/>
+        <result column="remote_server_ip" property="remoteServerIp"/>
+        <result column="remote_server_port" property="remoteServerPort"/>
+        <result column="remote_server_user" property="remoteServerUser"/>
+        <result column="remote_server_password" property="remoteServerPassword"/>
+        <result column="remote_server_path" property="remoteServerPath"/>
         <result column="create_uid" property="createUid"/>
         <result column="create_time" property="createTime"/>
         <result column="modify_uid" property="modifyUid"/>
@@ -39,8 +39,8 @@
         <if test="true">
             id, name, description, monitor_file, load_file, column_mark, column_name, allow_ip, allow_time,
             maximum_limit, api_url, api_params, format_func, jar_name, class_name, express, result_file, result_flag,
-            status, export_server_ip, export_server_port, export_server_user, export_server_password,
-            export_server_path, create_uid, create_time, modify_uid, modify_time
+            status, remote_server_ip, remote_server_port, remote_server_user, remote_server_password,
+            remote_server_path, create_uid, create_time, modify_uid, modify_time
         </if>
     </sql>
 

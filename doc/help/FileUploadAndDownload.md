@@ -171,7 +171,7 @@ public class DownloadController {
 }
 ```
 
-[Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
-[Spring MVC Download File Controller Example](https://howtodoinjava.com/spring-mvc/spring-mvc-download-file-controller-example/)
-[Uploading and Downloading Files with Spring Boot](https://www.devglan.com/spring-boot/spring-boot-file-upload-download)
-[Spring Boot 文件上传与下载](https://zhuanlan.zhihu.com/p/60856486)
+- [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
+- [Spring MVC Download File Controller Example](https://howtodoinjava.com/spring-mvc/spring-mvc-download-file-controller-example/)
+- [Uploading and Downloading Files with Spring Boot](https://www.devglan.com/spring-boot/spring-boot-file-upload-download)
+- [Spring Boot 文件上传与下载](https://zhuanlan.zhihu.com/p/60856486)

@@ -4,10 +4,9 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import java.time.LocalDateTime;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author moon
- * @since 2023-11-27
+ * @since 2023-12-08
  */
 @Getter
 @Setter
@@ -26,7 +25,7 @@ public class Job {
     private Integer id;
 
     /**
-     * 任务id
+     * 任务配置id
      */
     @TableField("config_id")
     private Integer configId;
@@ -44,13 +43,13 @@ public class Job {
     private String jobStatus;
 
     /**
-     * 监听文件
+     * 监听文件: 绝对路径
      */
     @TableField("monitor_file")
     private String monitorFile;
 
     /**
-     * 实际加载文件
+     * 实际加载文件: 绝对路径
      */
     @TableField("load_file")
     private String loadFile;
@@ -62,7 +61,7 @@ public class Job {
     private String allowIp;
 
     /**
-     * 开始时间
+     * 实际开始时间
      */
     @TableField("start_time")
     private LocalDateTime startTime;
@@ -98,16 +97,22 @@ public class Job {
     private Integer doneCount;
 
     /**
-     * 导出数
+     * 结果数
      */
-    @TableField("export_count")
-    private Integer exportCount;
+    @TableField("result_count")
+    private Integer resultCount;
 
     /**
-     * 实际导出文件: 绝对路径
+     * 结果文件: 绝对路径
      */
-    @TableField("export_file")
-    private String exportFile;
+    @TableField("result_file")
+    private String resultFile;
+
+    /**
+     * 结果标记文件: 绝对路径
+     */
+    @TableField("result_flag_file")
+    private String resultFlagFile;
 
     /**
      * 描述信息

@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author moon on 12/6/2023
@@ -50,5 +52,13 @@ class AviatorScriptUtilTest {
     void setPlaceholder() {
         Object result = AviatorScriptUtil.executeWithCache("'set placeholder value a: ' + #a", args);
         assertEquals("set placeholder value a: 1", result.toString());
+    }
+
+    @DisplayName("日期函数调用")
+    @org.junit.jupiter.api.Test
+    void dateFunction() {
+        Object result = AviatorScriptUtil.executeWithCache("'BAT_'+#date_to_string(sysdate(), 'yyyyMMdd')+'.DAT'", args);
+        String target = "BAT_" + LocalDate.now().format(DateTimeFormatter.BASIC_ISO_DATE) + ".DAT";
+        assertEquals(target, result.toString());
     }
 }

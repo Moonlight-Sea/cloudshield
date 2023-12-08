@@ -172,16 +172,16 @@ public class SimpleJobTaskExecutor implements JobTaskExecutor {
         if (!job.getJobStatus().equals(BatchJobConstant.JOB_STATUS_SUCCESS)) {
             return;
         }
-        if (StringUtils.isBlank(jobConfig.getExportServerIp())) {
+        if (StringUtils.isBlank(jobConfig.getRemoteServerIp())) {
             return;
         }
 
         // 1. get local file
-        String localFile = job.getExportFile();
-        SSHClient sshClient = SSHJUtil.setupSshj(jobConfig.getExportServerIp(), jobConfig.getExportServerUser(), jobConfig.getExportServerPassword());
+        String localFile = job.getResultFile();
+        SSHClient sshClient = SSHJUtil.setupSshj(jobConfig.getRemoteServerIp(), jobConfig.getRemoteServerUser(), jobConfig.getRemoteServerPassword());
         SFTPClient sftpClient = sshClient.newSFTPClient();
         // 2. put local file
-        sftpClient.put(localFile, jobConfig.getExportServerPath());
+        sftpClient.put(localFile, jobConfig.getRemoteServerPath());
         // 3. close
         sftpClient.close();
         sshClient.disconnect();

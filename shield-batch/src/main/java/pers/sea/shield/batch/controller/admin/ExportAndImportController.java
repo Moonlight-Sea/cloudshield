@@ -3,18 +3,15 @@ package pers.sea.shield.batch.controller.admin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.io.Resource;
-import org.springframework.http.ContentDisposition;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import pers.sea.shield.batch.common.enums.BatchErrorInfo;
+import pers.sea.shield.batch.pojo.entity.Job;
 import pers.sea.shield.batch.service.IExportAndImportService;
+import pers.sea.shield.batch.service.IJobService;
+import pers.sea.shield.common.core.exception.CloudShieldException;
 import pers.sea.shield.common.core.pojo.CommonResult;
-
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
 
 /**
  * 批量作业导入和导出处理
@@ -29,19 +26,21 @@ import java.util.Objects;
 public class ExportAndImportController {
 
     final IExportAndImportService exportAndImportService;
+    final IJobService jobService;
 
-    public ExportAndImportController(IExportAndImportService exportAndImportService) {
+    public ExportAndImportController(IExportAndImportService exportAndImportService,
+                                     IJobService jobService) {
         this.exportAndImportService = exportAndImportService;
+        this.jobService = jobService;
     }
 
-    @GetMapping(value = "/download/{fileName:.+}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-    public ResponseEntity<Resource> downloadFile(@PathVariable String date,
-                                                 @PathVariable String fileName) {
-        Resource resource = exportAndImportService.downloadFile(date, fileName);
-        Objects.requireNonNull(resource.getFilename(), BatchErrorInfo.FILE_IS_EMPTY.getMessage());
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, ContentDisposition.attachment().filename(resource.getFilename(), StandardCharsets.UTF_8).build().toString())
-                .body(resource);
+    @GetMapping(value = "/download/{jobId}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
+    public Resource downloadFile(@PathVariable String jobId) {
+        Job job = jobService.getById(jobId);
+        if (job == null) {
+            throw new CloudShieldException(BatchErrorInfo.JOB_NOT_FOUND);
+        }
+        return exportAndImportService.downloadFile(job.getResultFile());
     }
 
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

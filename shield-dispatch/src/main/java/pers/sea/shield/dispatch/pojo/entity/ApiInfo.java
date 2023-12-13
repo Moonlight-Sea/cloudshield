@@ -28,7 +28,8 @@ public class ApiInfo {
     private String uuid;
 
     /**
-     * 接口编码
+     * 接口编码 unique
+     * 6位代码: B00001; 前两位: 业务部门; 后四位: 自增
      */
     @TableField("item_code")
     private String itemCode;

@@ -51,7 +51,7 @@ public enum BatchErrorInfo implements ServiceErrorInfo {
 
     @Override
     public String getCode() {
-        return String.format("E%s%s%s", CloudShieldSystemConstant.CLOUD_SHIELD_SYSTEM_CODE, BatchSystemConstant.BATCH_SYSTEM_CODE, code);
+        return String.format("E%s%s%s", CloudShieldSystemConstant.CLOUD_SHIELD_SYSTEM_CODE, BatchSystemConstant.SYSTEM_CODE, code);
     }
 
     @Override

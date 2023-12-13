@@ -7,5 +7,5 @@ package pers.sea.shield.batch.common.constant;
  */
 public class BatchSystemConstant {
 
-    public static final String BATCH_SYSTEM_CODE = "B01";
+    public static final String SYSTEM_CODE = "B01";
 }

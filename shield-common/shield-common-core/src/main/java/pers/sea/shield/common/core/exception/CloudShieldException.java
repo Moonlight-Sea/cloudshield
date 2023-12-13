@@ -17,13 +17,8 @@ public class CloudShieldException extends RuntimeException {
         this.code = error.getCode();
     }
 
-    public CloudShieldException(String code, String message) {
+    public CloudShieldException(ServiceErrorInfo error, String message) {
         super(message);
-        this.code = code;
-    }
-
-    public CloudShieldException(ServiceErrorInfo error, Throwable e) {
-        super(error.getMessage(), e);
         this.code = error.getCode();
     }
 }

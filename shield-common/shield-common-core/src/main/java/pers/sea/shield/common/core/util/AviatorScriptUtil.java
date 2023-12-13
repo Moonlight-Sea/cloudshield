@@ -18,8 +18,7 @@ public class AviatorScriptUtil {
 
     public static Object executeWithCache(String script, JsonNode args) {
         ObjectMapper mapper = new ObjectMapper();
-        Map<String, Object> env = mapper.convertValue(args, new TypeReference<>() {
-        });
+        Map<String, Object> env = mapper.convertValue(args, new TypeReference<>() {});
         // 使用编译缓存模式, 第一次编译缓存后，无论脚本是否改变，都会使用缓存
         return AviatorEvaluator.execute(script, env, true);
     }

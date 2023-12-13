@@ -23,4 +23,12 @@ public interface IApiInfoService extends IService<ApiInfo> {
      * @return 分页结果
      */
     Page<ApiInfo> listPage(int current, int size, ApiInfo apiInfo);
+
+    /**
+     * 根据itemCode获取api信息
+     *
+     * @param itemCode itemCode
+     * @return api信息
+     */
+    ApiInfo getApiInfoByItemCode(String itemCode);
 }

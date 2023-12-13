@@ -26,4 +26,9 @@ public class ApiInfoServiceImpl extends ServiceImpl<ApiInfoMapper, ApiInfo> impl
         QueryWrapper<ApiInfo> wrapper = Wrappers.query(apiInfo).orderByDesc("create_time");
         return this.baseMapper.selectPage(page, wrapper);
     }
+
+    @Override
+    public ApiInfo getApiInfoByItemCode(String itemCode) {
+        return this.baseMapper.selectOne(Wrappers.lambdaQuery(ApiInfo.class).eq(ApiInfo::getItemCode, itemCode));
+    }
 }

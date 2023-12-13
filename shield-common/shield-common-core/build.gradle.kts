@@ -5,22 +5,22 @@ plugins {
 
 dependencies {
     api(libs.hutool.all)
-//    api(libs.spring.boot.starter.log)
-//    api("ch.qos.logback:logback-core:1.4.11")
     api(libs.bundles.jackson)
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-aop")
+    api(libs.commons.lang3)
+    api(libs.commons.io)
+    api(libs.commons.collections4)
 
-    // https://mvnrepository.com/artifact/com.googlecode.aviator/aviator
-    implementation("com.googlecode.aviator:aviator:5.4.1")
+    api(libs.mybatis.plus.boot.starter)
+    api(libs.mysql.connector.java)
 
-//    testImplementation(testLibs.junit.jupiter)
-//    testImplementation(testLibs.junit.api)
-//    testImplementation(testLibs.junit.engine)
-//    testImplementation(testLibs.junit.platform.launcher)
+    api(libs.aviator)
+
 
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 
+    // 仅限于开发环境使用的依赖
+    // https://mvnrepository.com/artifact/com.github.gavlyukovskiy/p6spy-spring-boot-starter
+    api(devLibs.p6spy.spring.boot.starter)
 }

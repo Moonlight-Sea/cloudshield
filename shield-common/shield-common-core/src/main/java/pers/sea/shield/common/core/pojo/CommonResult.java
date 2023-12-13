@@ -11,14 +11,12 @@ import pers.sea.shield.common.core.exception.ServiceErrorInfo;
  *
  * @author moon on 6/14/2023
  */
+@Setter
 @Getter
 public class CommonResult<T> {
 
-    @Setter
     private String code;
-    @Setter
     private String message;
-    @Setter
     private T data;
 
     private CommonResult(ServiceErrorInfo errorInfo, T data) {

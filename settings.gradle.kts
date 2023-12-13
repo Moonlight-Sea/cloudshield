@@ -27,6 +27,7 @@ dependencyResolutionManagement {
         create("libs") {
             version("springBootVersion", "3.1.6")
             version("springCloudVersion", "4.0.4")
+            val jacksonVersion = version("jacksonVersion", "2.15.2")
 
             library("mysql-connector-java", "mysql:mysql-connector-java:8.0.28")
 
@@ -36,7 +37,10 @@ dependencyResolutionManagement {
             library("commons-httpclient5", "org.apache.httpcomponents.client5:httpclient5:5.2.3")
             library("commons-httpclient5-fluent", "org.apache.httpcomponents.client5:httpclient5-fluent:5.2.3")
 
-
+            // https://mvnrepository.com/artifact/com.hierynomus/sshj 服务器连接
+            library("sshj", "com.hierynomus:sshj:0.37.0")
+            // https://mvnrepository.com/artifact/com.googlecode.aviator/aviator
+            library("aviator", "com.googlecode.aviator:aviator:5.4.1")
 
             library("hutool-all", "cn.hutool:hutool-all:5.8.23")
 
@@ -44,11 +48,12 @@ dependencyResolutionManagement {
             library("groovy-json", "org.codehaus.groovy:groovy-json:3.0.5")
             library("groovy-nio", "org.codehaus.groovy:groovy-nio:3.0.5")
 
-            library("jackson-core", "com.fasterxml.jackson.core:jackson-core:2.15.2")
-            library("jackson-databind", "com.fasterxml.jackson.core:jackson-databind:2.15.2")
-            library("jackson-annotations", "com.fasterxml.jackson.core:jackson-annotations:2.15.2")
-            library("jackson-dataformat-yaml", "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.2")
-            library("jackson-datatype-jsr310", "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.15.2")
+            library("jackson-core", "com.fasterxml.jackson.core", "jackson-core").versionRef(jacksonVersion)
+            library("jackson-databind", "com.fasterxml.jackson.core", "jackson-databind").versionRef(jacksonVersion)
+            library("jackson-annotations", "com.fasterxml.jackson.core", "jackson-annotations").versionRef(jacksonVersion)
+            library("jackson-dataformat-xml", "com.fasterxml.jackson.dataformat", "jackson-dataformat-xml").versionRef(jacksonVersion)
+            library("jackson-dataformat-yaml", "com.fasterxml.jackson.dataformat", "jackson-dataformat-yaml").versionRef(jacksonVersion)
+            library("jackson-datatype-jsr310", "com.fasterxml.jackson.datatype", "jackson-datatype-jsr310").versionRef(jacksonVersion)
 
             library("commons-io", "commons-io:commons-io:2.15.0")
             library("commons-codec", "commons-codec:commons-codec:1.15")
@@ -58,7 +63,7 @@ dependencyResolutionManagement {
             library("mybatis-plus-generator", "com.baomidou:mybatis-plus-generator:3.5.3.1")
             library("freemarker", "org.freemarker:freemarker:2.3.31")
 
-            bundle("jackson", listOf("jackson-core", "jackson-databind", "jackson-annotations", "jackson-dataformat-yaml", "jackson-datatype-jsr310"))
+            bundle("jackson", listOf("jackson-core", "jackson-databind", "jackson-annotations", "jackson-dataformat-xml", "jackson-dataformat-yaml", "jackson-datatype-jsr310"))
         }
         create("testLibs") {
             val junit5 = version("junit5", "5.10.1")

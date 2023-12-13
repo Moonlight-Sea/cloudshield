@@ -1,6 +1,0 @@
-logging:
-  file:
-    path: E:\Users\lucyf\Data\logs\shield-batch\
-  level:
-    root: info
-    com.netflix.discovery: 'OFF'

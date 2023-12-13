@@ -1,10 +1,12 @@
-package pers.sea.shield.dispatch.controller;
+package pers.sea.shield.dispatch.controller.external;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import pers.sea.shield.common.core.pojo.CommonResult;
 
 /**
  * 快速派遣服务
@@ -21,8 +23,10 @@ public class DispatchController {
      * @return XML报文 => ESB
      */
     @PostMapping(value = "/api", produces = {MediaType.APPLICATION_XML_VALUE})
-    public CommonResult<String> entrance(@RequestBody String request) {
-        return CommonResult.ok(request);
+    public String entrance(@RequestBody String request) throws JsonProcessingException {
+        XmlMapper xmlMapper = new XmlMapper();
+        JsonNode jsonNode = xmlMapper.readTree(request);
+        return jsonNode.toPrettyString();
     }
 
 }

@@ -11,6 +11,7 @@ rootProject.name = "cloud-shield"
 include(
         ":shield-dispatch",
         ":shield-config",
+        ":shield-bpm",
         ":shield-batch",
         ":shield-store",
         ":shield-common",

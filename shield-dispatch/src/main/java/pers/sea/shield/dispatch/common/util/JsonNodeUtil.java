@@ -10,26 +10,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  */
 public class JsonNodeUtil {
 
-    public static JsonNode getNode(ObjectNode node, String... paths) {
-        if (node == null) {
-            return null;
-        }
-        JsonNode nodeItem = node;
-        for (int i = 0; i < paths.length; i++) {
-            if (nodeItem.get(paths[i]) == null) {
-                return null;
-            }
-            nodeItem = nodeItem.get(paths[i]);
-        }
-        return nodeItem;
-    }
-
     public static String getNodeValue(ObjectNode node, String... paths) {
         if (node == null) {
             return null;
         }
         JsonNode nodeItem = node;
-        for (int i = 0; i < paths.length; i++) {
+
+        int i = 0;
+        while (i < paths.length) {
             if (i == paths.length - 1) {
                 return nodeItem.get(paths[i]).asText();
             }
@@ -38,6 +26,7 @@ public class JsonNodeUtil {
             }
             nodeItem = nodeItem.get(paths[i]);
 
+            i++;
         }
         return null;
     }

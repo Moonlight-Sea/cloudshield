@@ -4,9 +4,12 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.time.LocalDateTime;
+
 import lombok.Getter;
 import lombok.Setter;
+import pers.sea.shield.dispatch.common.enums.ParamInfoMustInputCheckEnum;
 
 /**
  * <p>
@@ -61,7 +64,7 @@ public class ParamInfo {
      * 必输校验0-非必输;1-必输
      */
     @TableField("must_input_check")
-    private Integer mustInputCheck;
+    private ParamInfoMustInputCheckEnum mustInputCheck;
 
     /**
      * 描述信息

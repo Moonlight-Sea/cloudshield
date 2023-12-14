@@ -47,7 +47,7 @@ public class ApiInfo {
     private String apiUrl;
 
     /**
-     * 接口方法
+     * 接口方法:get,post,put,delete
      */
     @TableField("api_method")
     private String apiMethod;

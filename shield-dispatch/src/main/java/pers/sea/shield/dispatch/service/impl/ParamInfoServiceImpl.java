@@ -9,6 +9,8 @@ import pers.sea.shield.dispatch.service.IParamInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * <p>
  * 请求参数表 服务实现类
@@ -25,5 +27,13 @@ public class ParamInfoServiceImpl extends ServiceImpl<ParamInfoMapper, ParamInfo
         Page<ParamInfo> page = new Page<>(current, size);
         QueryWrapper<ParamInfo> queryWrapper = Wrappers.query(paramInfo).orderByDesc("create_time");
         return this.baseMapper.selectPage(page, queryWrapper);
+    }
+
+    @Override
+    public List<ParamInfo> listByApiUuid(String uuid) {
+        if (uuid != null) {
+            return this.baseMapper.selectList(Wrappers.<ParamInfo>query().lambda().eq(ParamInfo::getApiUuid, uuid));
+        }
+        return null;
     }
 }

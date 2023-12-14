@@ -22,8 +22,17 @@ public enum DispatchErrorInfo implements ServiceErrorInfo {
     // ------------------------------------------------------------------------------------------------------
     API_INFO_NOT_FOUND("B001", "API信息不存在"),
 
-    ;
 
+    // N - 网络请求异常
+    // ------------------------------------------------------------------------------------------------------
+    REMOTE_REQUEST_ERROR("N001", "远程请求异常"),
+    REMOTE_REQUEST_TIMEOUT("N002", "远程请求超时"),
+    REMOTE_REQUEST_NOT_FOUND("N003", "远程请求不存在"),
+    REMOTE_REQUEST_NOT_SUPPORT("N004", "远程请求不支持"),
+    REMOTE_REQUEST_NOT_SUPPORT_METHOD("N005", "远程请求不支持当前方法"),
+
+
+    ;
     private final String code;
     private final String message;
 

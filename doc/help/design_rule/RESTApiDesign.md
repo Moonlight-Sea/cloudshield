@@ -1,5 +1,7 @@
 # [Best practices for REST API design](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/#h-maintain-good-security-practices)
 
+## 1. Overview
+
 REST APIs are one of the most common kinds of web interfaces available today. They allow various clients including browser 
 apps to communicate with services via the REST API. Therefore, it’s very important to design REST APIs properly so that 
 we won’t run into problems down the road. We have to take into account 

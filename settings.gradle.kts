@@ -64,6 +64,7 @@ dependencyResolutionManagement {
             library("mybatis-plus-generator", "com.baomidou:mybatis-plus-generator:3.5.3.1")
             library("freemarker", "org.freemarker:freemarker:2.3.31")
 
+
             bundle("jackson", listOf("jackson-core", "jackson-databind", "jackson-annotations", "jackson-dataformat-xml", "jackson-dataformat-yaml", "jackson-datatype-jsr310"))
         }
         create("testLibs") {

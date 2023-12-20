@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
  */
 public class AESUtilTest {
 
-    @Test
-    public void case1() {
-        String url = "jdbc:mysql://127.0.0.1:3306/shield_dispatch?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8";
-        // String randomKey = AES.generateRandomKey();
-        // System.out.println(randomKey);
-        String encrypt = AES.encrypt(url, "dcd01923ac6e0c0e");
-        System.out.println(encrypt);
-    }
+  @Test
+  public void case1() {
+    String url = "jdbc:mysql://127.0.0.1:3306/shield_bpm?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8";
+    // String randomKey = AES.generateRandomKey();
+    // System.out.println(randomKey);
+    String encrypt = AES.encrypt(url, "");
+    System.out.println(encrypt);
+  }
 }

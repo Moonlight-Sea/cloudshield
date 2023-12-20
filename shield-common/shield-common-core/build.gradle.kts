@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    `java-library`
+    id("java-library")
 }
 
 dependencies {

@@ -16,7 +16,7 @@ description = "cloud-shield 聚合父工程"
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(19))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
@@ -76,4 +76,5 @@ subprojects {
         testAnnotationProcessor("org.projectlombok:lombok:1.18.30")
         testCompileOnly("org.projectlombok:lombok:1.18.30")
     }
+
 }

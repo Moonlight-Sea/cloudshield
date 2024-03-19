@@ -1,8 +1,14 @@
 package pers.sea.shield.batch.handler;
 
+import static pers.sea.shield.batch.common.constant.BatchJobConstant.STATUS_ENABLE;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.regex.Pattern;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -13,15 +19,8 @@ import pers.sea.shield.batch.pojo.entity.Job;
 import pers.sea.shield.batch.pojo.entity.JobConfig;
 import pers.sea.shield.batch.service.IJobConfigService;
 import pers.sea.shield.batch.service.IJobService;
+import pers.sea.shield.batch.task.JobTaskExecutor;
 import pers.sea.shield.batch.task.SimpleJobTaskExecutor;
-
-import java.io.File;
-import java.io.IOException;
-import java.time.LocalTime;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import static pers.sea.shield.batch.common.constant.BatchJobConstant.STATUS_ENABLE;
 
 /**
  * 批量作业业务处理类
@@ -34,11 +33,11 @@ public class JobHandler {
 
     private final IJobConfigService jobConfigService;
     private final IJobService jobService;
-    private final SimpleJobTaskExecutor simpleJobTask;
+    private final JobTaskExecutor simpleJobTask;
 
     public JobHandler(IJobConfigService jobConfigService,
-                      IJobService jobService,
-                      SimpleJobTaskExecutor simpleJobTask) {
+            IJobService jobService,
+            SimpleJobTaskExecutor simpleJobTask) {
         this.jobConfigService = jobConfigService;
         this.jobService = jobService;
         this.simpleJobTask = simpleJobTask;
@@ -53,7 +52,8 @@ public class JobHandler {
         LambdaQueryWrapper<JobConfig> queryWrapper = Wrappers.lambdaQuery(JobConfig.class)
                 .eq(JobConfig::getStatus, STATUS_ENABLE);
         jobConfigService.list(queryWrapper).stream()
-                .filter(config -> Pattern.compile(config.getMonitorFile()).matcher(flagFile.getName()).matches())
+                .filter(config -> Pattern.compile(config.getMonitorFile())
+                        .matcher(flagFile.getName()).matches())
                 .forEach(config -> jobService.save(JobConvert.convert(config, flagFile)));
     }
 

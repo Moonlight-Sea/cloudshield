@@ -64,6 +64,7 @@ dependencyResolutionManagement {
             library("mybatis-plus-generator", "com.baomidou:mybatis-plus-generator:3.5.3.1")
             library("freemarker", "org.freemarker:freemarker:2.3.31")
 
+            library("aerospike-client", "com.aerospike:aerospike-client:7.0.0")
 
             bundle("jackson", listOf("jackson-core", "jackson-databind", "jackson-annotations", "jackson-dataformat-xml", "jackson-dataformat-yaml", "jackson-datatype-jsr310"))
         }
@@ -74,13 +75,10 @@ dependencyResolutionManagement {
             library("h2", "com.h2database:h2:2.2.224")
 
             library("junit-jupiter", "org.junit.jupiter", "junit-jupiter").versionRef(junit5)
-            library("junit-api", "org.junit.jupiter", "junit-jupiter-api").versionRef(junit5)
-            library("junit-engine", "org.junit.jupiter", "junit-jupiter-engine").versionRef(junit5)
 
             library("junit-platform-launcher", "org.junit.platform", "junit-platform-launcher").versionRef(junitPlatform)
             library("spring-boot-starter-test", "org.springframework.boot:spring-boot-starter-test:3.1.6")
 
-            bundle("junit5", listOf("junit-jupiter", "junit-api", "junit-engine", "junit-platform-launcher"))
         }
         // 仅用于开发环境
         create("devLibs") {

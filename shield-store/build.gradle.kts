@@ -7,4 +7,8 @@ plugins {
 
 dependencies {
     implementation(project(":shield-common:shield-common-core"))
+
+    implementation(libs.aerospike.client)
+
+    testImplementation(testLibs.junit.jupiter)
 }

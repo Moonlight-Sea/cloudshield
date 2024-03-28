@@ -29,7 +29,7 @@ create table dispatch_param_info
     api_uuid         varchar(50)             not null comment '接口唯一编码:00-通用',
     code             varchar(50) unique      not null comment '进件参数',
     name_cn          varchar(50)             not null comment '中文名称',
-    mapping_code     varchar(50)             not null comment '映射参数',
+    mapping_code     varchar(50)             not null comment '映射参数', # 是否建立统一的变量表管理内部的映射
     data_type        varchar(2)              not null default '00' comment '数据类型00-string;01-int;02-double;03-array;',
     must_input_check int                     not null default 0 comment '必输校验0-非必输;1-必输',
     description      varchar(255)            not null comment '描述信息',

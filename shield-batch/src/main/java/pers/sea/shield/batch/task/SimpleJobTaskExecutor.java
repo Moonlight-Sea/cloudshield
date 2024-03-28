@@ -5,6 +5,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import lombok.extern.slf4j.Slf4j;
 import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.sftp.SFTPClient;
@@ -24,16 +33,6 @@ import pers.sea.shield.common.core.constant.DateConstant;
 import pers.sea.shield.common.core.constant.SymbolConstant;
 import pers.sea.shield.common.core.exception.CloudShieldException;
 import pers.sea.shield.common.core.util.AviatorScriptUtil;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 批量作业执行类
@@ -60,7 +59,8 @@ public class SimpleJobTaskExecutor implements JobTaskExecutor {
     private File loadFile;
     private File resultFile;
 
-    public SimpleJobTaskExecutor(IJobService jobService, IJobConfigService jobConfigService, ObjectMapper objectMapper) {
+    public SimpleJobTaskExecutor(IJobService jobService, IJobConfigService jobConfigService,
+            ObjectMapper objectMapper) {
         this.jobService = jobService;
         this.jobConfigService = jobConfigService;
         this.objectMapper = objectMapper;
@@ -84,6 +84,7 @@ public class SimpleJobTaskExecutor implements JobTaskExecutor {
         loadFile = Paths.get(BatchProperty.monitorDir, date, jobConfig.getLoadFile()).toFile();
         if (!loadFile.exists()) {
             // 加载数据文件不存在 结束
+            log.error("[{}] 作业的数据文件不存在 path: [{}]", job.getJobName(), loadFile.getAbsolutePath());
             return;
         }
         job.setLoadFile(loadFile.getAbsolutePath());
@@ -92,7 +93,7 @@ public class SimpleJobTaskExecutor implements JobTaskExecutor {
         String baseResultDir = Paths.get(BatchProperty.resultDir, date).toString();
         resultFile = Paths.get(baseResultDir, jobConfig.getResultFile()).toFile();
         // 重复作业删除上一次的结果文件
-        resultFile.deleteOnExit();
+        log.info("重复作业 [{}] 删除 [{}]", job.getJobName(), resultFile.exists());
     }
 
     @Override

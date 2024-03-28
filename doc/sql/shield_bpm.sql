@@ -1,3 +1,4 @@
+-- mysql
 drop database if exists shield_bpm;
 create database shield_bpm;
 use shield_bpm;
@@ -18,7 +19,7 @@ create table bpm_flow_define
     update_user  varchar(255) default 'Unknown'           not null
 );
 
-# 流程实例表: 包括流程实例的ID、KEY、状态、开始时间、结束时间、持续时间等信息。
+-- 流程实例表: 包括流程实例的ID、KEY、状态、开始时间、结束时间、持续时间等信息。
 drop table if exists bpm_flow_instance;
 create table bpm_flow_instance
 (
@@ -35,7 +36,7 @@ create table bpm_flow_instance
     update_user  varchar(255) default 'Unknown'           not null
 );
 
-# 任务数据模型: 包括任务的ID、名称、描述、处理人、创建时间、到期时间、优先级等信息。
+-- # 任务数据模型: 包括任务的ID、名称、描述、处理人、创建时间、到期时间、优先级等信息。
 drop table if exists bpm_flow_task;
 create table bpm_flow_task
 (
@@ -73,7 +74,7 @@ create table bpm_flow_task_attr
     update_user       varchar(255) default 'Unknown'           not null
 );
 
-# 任务执行历史表
+-- # 任务执行历史表
 drop table if exists bpm_flow_task_record;
 create table bpm_flow_task_record
 (

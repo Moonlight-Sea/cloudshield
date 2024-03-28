@@ -17,7 +17,7 @@ classpath and conveniently configure the drivers and the JDBC connection.
 
 Another way of using P6Spy is through integration with the existing code of our application, assuming that making small
 code changes is acceptable. In the next section, we’ll see an example of how it’s possible to integrate P6Spy in a
-Spring Boot application by relying on auto-configuration.
+Spring Boot application by relying on auto configuration.
 
 The [p6spy-spring-boot-starter](https://mvnrepository.com/artifact/com.github.gavlyukovskiy/p6spy-spring-boot-starter)
 is a repository that provides integration with P6Spy and other database monitoring
@@ -36,7 +36,7 @@ If we want to configure logging, we need to add a file named “spy.properties�
 #################################################################
 # P6Spy Options File                                            #
 # See documentation for detailed instructions                   #
-# http://p6spy.github.io/p6spy/2.0/configandusage.html          #
+# https://p6spy.readthedocs.io/en/latest/configandusage.html        #
 #################################################################
 
 #################################################################

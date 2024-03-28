@@ -11,9 +11,19 @@ public class AESUtilTest {
     @Test
     public void case1() {
         String url = "jdbc:mysql://127.0.0.1:3306/shield_bpm?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B8";
+        String user = "root";
+        String password = "123456";
         // String randomKey = AES.generateRandomKey();
-        // System.out.println(randomKey);
-        String encrypt = AES.encrypt(url, "");
+        String randomKey = "2f9a1c7026c2eee1";
+        System.out.println(randomKey);
+
+        String encrypt = AES.encrypt(url, randomKey);
         System.out.println(encrypt);
+
+        String encryptUser = AES.encrypt(user, randomKey);
+        System.out.println(encryptUser);
+
+        String encryptPwd = AES.encrypt(password, randomKey);
+        System.out.println(encryptPwd);
     }
 }

@@ -1,1 +1,0 @@
-[Jackson Date](https://www.baeldung.com/jackson-serialize-dates#bd-java-8)

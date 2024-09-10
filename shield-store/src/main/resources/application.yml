@@ -1,0 +1,27 @@
+server:
+  port: 8060
+  servlet:
+    context-path: /store
+
+spring:
+  profiles:
+    active: local
+  # 应用名称
+  application:
+    name: shield-store
+  config:
+    import: optional:configserver:http://localhost:8888
+  data:
+    solr:
+      repositories:
+        enabled: true
+      host: http://localhost:8983/solr
+
+elasticsearch:
+  host: 116.205.230.143
+  port: 9200
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: pers.sea.shield.store.pojo.entity
+

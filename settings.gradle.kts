@@ -37,6 +37,9 @@ dependencyResolutionManagement {
             library("commons-collections4", "org.apache.commons:commons-collections4:4.4")
             library("commons-httpclient5", "org.apache.httpcomponents.client5:httpclient5:5.2.3")
             library("commons-httpclient5-fluent", "org.apache.httpcomponents.client5:httpclient5-fluent:5.2.3")
+            // Apache HttpClient Kerberos Authenticator
+            library("httpclient-gssapi", "org.apache.httpcomponent:httpclient-gssapi:4.5.13")
+
 
             // https://mvnrepository.com/artifact/com.hierynomus/sshj 服务器连接
             library("sshj", "com.hierynomus:sshj:0.37.0")
@@ -65,6 +68,12 @@ dependencyResolutionManagement {
             library("freemarker", "org.freemarker:freemarker:2.3.31")
 
             library("aerospike-client", "com.aerospike:aerospike-client:7.0.0")
+
+            // fastjson
+            library("com.alibaba.fastjson", "com.alibaba:fastjson:2.0.39")
+
+            // https://mvnrepository.com/artifact/com.alibaba/easyexcel
+            library("com.alibaba.easyexcel","com.alibaba:easyexcel:3.3.4")
 
             bundle("jackson", listOf("jackson-core", "jackson-databind", "jackson-annotations", "jackson-dataformat-xml", "jackson-dataformat-yaml", "jackson-datatype-jsr310"))
         }

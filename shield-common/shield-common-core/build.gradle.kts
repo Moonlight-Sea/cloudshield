@@ -16,6 +16,10 @@ dependencies {
 
     api(libs.aviator)
 
+    api(libs.com.alibaba.easyexcel)
+
+    // fastjson
+    api(libs.com.alibaba.fastjson)
 
     testImplementation(platform("org.junit:junit-bom:5.10.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
